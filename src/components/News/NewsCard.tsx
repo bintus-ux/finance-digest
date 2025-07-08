@@ -1,10 +1,7 @@
 import React from "react";
 import { NewsItem } from "@/types/news";
 import { format } from "date-fns";
-import {
-  ArrowRightCircleIcon,
-  ArrowUpRightIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 
 interface NewsCardProps {
   item: NewsItem;
