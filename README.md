@@ -27,7 +27,7 @@ npm install
 3. Create `.env.local` file with your API keys
 
 ```env
-NEXT_PUBLIC_FINNHUB_API_KEY=your_api_key_here
+NEXT_PUBLIC_FINNHUB_API_KEY=crals9pr01qhk4bqotb0crals9pr01qhk4bqotbg
 NEXT_PUBLIC_FINNHUB_API_URL=https://finnhub.io/api/v1/news
 ```
 
