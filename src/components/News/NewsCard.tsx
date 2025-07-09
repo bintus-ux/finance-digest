@@ -50,7 +50,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ item }) => {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#0E0D13] w-full p-0 md:p-4 flex flex-col gap-2 hover:scale-[1.02] transition-transform duration-200 rounded border border-transparent  hover:bg-[#2A283E]"
+          className="bg-[#0E0D13] w-full p-0 md:p-4 flex flex-col gap-2 hover:scale-[1.02] transition-transform duration-200 border border-transparent  hover:bg-[#2A283E]"
         >
           {item.image && (
             <img

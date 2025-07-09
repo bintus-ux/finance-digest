@@ -26,14 +26,6 @@ const NewsList: React.FC<NewsListProps> = ({ news, loading, error }) => {
     );
   }
 
-  if (!news.length) {
-    return (
-      <div className="p-4 text-center text-gray-500">
-        No news available at the moment.
-      </div>
-    );
-  }
-
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {news.map((item) => (
