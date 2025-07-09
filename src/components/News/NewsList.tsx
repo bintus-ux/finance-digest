@@ -18,7 +18,7 @@ const NewsList: React.FC<NewsListProps> = ({ news, loading, error }) => {
 
   if (loading) {
     return (
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {[...Array(5)].map((_, i) => (
           <NewsSkeleton key={i} />
         ))}
@@ -35,7 +35,7 @@ const NewsList: React.FC<NewsListProps> = ({ news, loading, error }) => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {news.map((item) => (
         <NewsCard key={item.id} item={item} />
       ))}

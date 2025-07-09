@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Rubik } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +9,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -23,11 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
-      >
-        <main className="min-h-screen bg-[#fff]">{children}</main>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable}`}
+    >
+      <body className="antialiased bg-gray-50">
+        <main className="min-h-screen">{children}</main>
       </body>
     </html>
   );

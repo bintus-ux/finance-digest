@@ -1,7 +1,6 @@
 import React from "react";
 import { NewsItem } from "@/types/news";
 import { format } from "date-fns";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 
 interface NewsCardProps {
   item: NewsItem;
@@ -9,46 +8,78 @@ interface NewsCardProps {
 
 const NewsCard: React.FC<NewsCardProps> = ({ item }) => {
   return (
-    <a
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-    >
-      <div className="p-4">
-        <div className="flex items-start gap-4">
+    <div className="group">
+      {/* Mobile view  */}
+      <div className="md:hidden">
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start gap-4 bg-[#0E0D13] py-4 px-0 border-b border-gray-700 last:border-0 hover:bg-[#2A283E]"
+        >
           {item.image && (
-            <div className="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.headline}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "/placeholder-image.jpg";
-                }}
-              />
-            </div>
+            <img
+              src={item.image}
+              alt={item.headline}
+              className="w-[100px] h-[100px] object-cover flex-shrink-0"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/placeholder-image.jpg";
+              }}
+            />
           )}
-          <div className="flex-1">
-            <div className="flex justify-between items-start">
-              <span className="text-xs font-medium text-gray-500">
+
+          <div className="flex flex-col justify-between pr-2">
+            <div className="flex flex-row justify-between text-gray-400 text-[11px] uppercase tracking-wide mb-2">
+              <span className="font-['Rubik'] font-normal text-[12px] text-white leading-[16px] uppercase">
                 {item.source}
               </span>
-              <span className="text-xs text-gray-400">
-                {format(new Date(item.datetime * 1000), "MMM dd, yyyy")}
-              </span>
+              <span className="font-['Rubik'] font-normal text-[12px] text-white leading-[16px] uppercase">
+                {format(new Date(item.datetime * 1000), "dd MMM yyyy")}
+              </span>{" "}
             </div>
-            <h3 className="mt-1 text-lg font-semibold text-gray-900 line-clamp-2">
+            <h3 className="font-medium text-[20px] leading-[24px] text-white font-['Rubik'] line-clamp-3">
               {item.headline}
             </h3>
-            <div className="mt-2 flex items-center text-blue-600 text-sm">
-              <span>Read more</span>
-              <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
-            </div>
           </div>
-        </div>
+        </a>
       </div>
-    </a>
+
+      {/* Desktop view */}
+      <div className="hidden md:block">
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#0E0D13] w-full p-0 md:p-4 flex flex-col gap-2 hover:scale-[1.02] transition-transform duration-200 rounded border border-transparent  hover:bg-[#2A283E]"
+        >
+          {item.image && (
+            <img
+              src={item.image}
+              alt={item.headline}
+              className="w-full h-36 object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/placeholder-image.jpg";
+              }}
+            />
+          )}
+
+          <div className="flex flex-col gap-2 mt-2">
+            <p className="text-xs text-gray-400 flex justify-between">
+              <span className="font-['Rubik'] font-normal text-[12px] text-white leading-[16px] uppercase">
+                {item.source}
+              </span>
+              <span className="font-['Rubik'] font-normal text-[12px] text-white leading-[16px] uppercase">
+                {format(new Date(item.datetime * 1000), "dd MMM yyyy")}
+              </span>
+            </p>
+
+            <h3 className="font-medium text-[20px] leading-[24px] text-white font-['Rubik'] line-clamp-3">
+              {item.headline}
+            </h3>
+          </div>
+        </a>
+      </div>
+    </div>
   );
 };
 
